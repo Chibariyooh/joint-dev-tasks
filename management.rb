@@ -5,7 +5,7 @@ require './task'
 require './message'
 
 class Management
-  TASK_RANGE = (1..20).freeze
+  TASK_RANGE = (1..23).freeze
   @selected_numbers = []
 
   def initialize

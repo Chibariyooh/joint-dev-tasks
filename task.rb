@@ -103,7 +103,7 @@ def q11
   end
 end
 
-def q12
+def q21
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
@@ -270,3 +270,101 @@ def q20
     zoo.info_entry_fee(user)
   end
 end
+
+def q21 #(条件分岐課題)
+  
+  plans = [
+    {place:"沖縄", price:10000},
+    {place:"北海道", price:20000},
+    {place:"九州", price:15000}
+  ]
+
+  puts "旅行プランをお選びください"
+  plans.each.with_index(1) do |plan,i|
+    puts "#{i}:#{plan[:place]}は#{plan[:price]}です"
+  end
+
+  puts "=================="
+  puts "番号を選択してください"
+  plan_number = gets.to_i
+
+  plan = plans[plan_number-1]
+
+  if plan_number<=3 && plan_number>=1
+    puts "#{plan[:place]}ですね"
+  else
+    while plan_number<1 || plan_number>3
+      puts "**選択肢に誤りがあります**"
+      puts "1~3で行きたい箇所を選んでください"
+      puts "=================="
+    
+      puts "番号を選択してください"
+      plan_number = gets.to_i
+      plan = plans[plan_number-1]
+      puts "#{plan[:place]}ですね"
+    end
+  end
+
+  puts "=================="
+  puts "何人で行きますか?"
+  amount = gets.to_i
+
+  puts "=================="
+  puts "#{amount}人ですね。"
+
+  if amount>=5
+    puts "=================="
+    puts "5人以上なので10%offです！"
+    total_price = plan[:price]*amount*0.9
+  else
+    puts "=================="
+    total_price = plan[:price]*amount
+  end
+
+  puts "旅行代金は総額#{total_price.round}円です"
+
+end
+
+
+def q22 #(ハッシュ課題)
+  
+  users = [
+  {name:"田中",age:30,height:160},
+  {name:"佐藤",age:70,height:150},
+  {name:"鈴木",age:10,height:120}
+  ]
+
+  users.each do |user|
+
+    puts "===================================="
+    puts "#{user[:name]}さんは#{user[:age]}歳で#{user[:height]}cmです"
+
+    if user[:age]>65 or user[:height]<130
+      puts "ご利用いただけません"
+    else
+      puts "ご利用いただけます"
+    end
+    puts "===================================="
+  end
+
+end
+
+  
+
+
+  def q23 #(配列課題)
+    greetings=["Ruby","PHP","Java"]
+
+    greetings.each do |greeting|
+      if greeting == "Ruby"
+        puts "Ruby：puts \"Hello World!\""
+      elsif greeting == "PHP"
+        puts  "PHP：echo \"Hello World!\";"
+      elsif greeting == "Java"
+        puts "Java：System.out.println(\"Hello World!\");"
+      end
+    end
+  end
+  
+
+
